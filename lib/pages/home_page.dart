@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart'; 
+import 'dart:async'; // Required for the automatic carousel Timer
 import '../main.dart'; // To access denovoRed, denovoBlack, etc.
 
 // --- DUMMY DATA FOR DEMO ---
@@ -21,67 +22,67 @@ class CarModel {
   });
 }
 
-// Base list of 8 cars
+// 💡 UPDATED: Base list of 8 cars with high-quality, specific image URLs
 final List<CarModel> baseFeaturedCars = [
   CarModel(
     name: 'Porsche 911 GT3',
-    imageUrl: 'https://images.unsplash.com/photo-1552519503-f14d80a1aa74?q=80&w=2940&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1552519503-f14d80a1aa74?q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800',
     year: 2023,
     price: 180500.00,
     description: 'A masterpiece of engineering and speed.',
   ),
   CarModel(
     name: 'BMW M8 Competition',
-    imageUrl: 'https://images.unsplash.com/photo-1555543163-955685a7e6e9?q=80&w=2940&auto=format&fit:crop',
+    imageUrl: 'https://images.unsplash.com/photo-1555543163-955685a7e6e9?q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800',
     year: 2024,
     price: 135900.00,
     description: 'The pinnacle of luxury and performance.',
   ),
   CarModel(
     name: 'Mercedes-AMG G 63',
-    imageUrl: 'https://images.unsplash.com/photo-1627993070494-068b5563969a?q=80&w=2832&auto=format&fit:crop',
+    imageUrl: 'https://images.unsplash.com/photo-1627993070494-068b5563969a?q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800',
     year: 2022,
     price: 179000.00,
     description: 'Iconic design meets off-road capability.',
   ),
   CarModel(
     name: 'Audi R8 Coupe V10',
-    imageUrl: 'https://images.unsplash.com/photo-1549463942-e2540d995328?q=80&w=2940&auto=format&fit:crop',
+    imageUrl: 'https://images.unsplash.com/photo-1549463942-e2540d995328?q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800',
     year: 2023,
     price: 158400.00,
     description: 'Naturally aspirated V10 power and sharp looks.',
   ),
   CarModel(
     name: 'Range Rover Sport',
-    imageUrl: 'https://images.unsplash.com/photo-1616781297594-54c30c82f9d7?q=80&w=2940&auto=format&fit:crop',
+    imageUrl: 'https://images.unsplash.com/photo-1616781297594-54c30c82f9d7?q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800',
     year: 2024,
     price: 95000.00,
     description: 'Luxury SUV redefined.',
   ),
   CarModel(
     name: 'Tesla Model S Plaid',
-    imageUrl: 'https://images.unsplash.com/photo-1606775586675-b6957a4e8d35?q=80&w=2940&auto=format&fit:crop',
+    imageUrl: 'https://images.unsplash.com/photo-1606775586675-b6957a4e8d35?q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800',
     year: 2023,
     price: 108990.00,
     description: 'Electric performance and futuristic technology.',
   ),
   CarModel(
     name: 'Ford Mustang Shelby GT500',
-    imageUrl: 'https://images.unsplash.com/photo-1617477545800-e2604ce22c60?q=80&w=2940&auto=format&fit:crop',
+    imageUrl: 'https://images.unsplash.com/photo-1617477545800-e2604ce22c60?q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800',
     year: 2022,
     price: 80500.00,
     description: 'American muscle at its finest.',
   ),
   CarModel(
     name: 'Lexus LC 500',
-    imageUrl: 'https://images.unsplash.com/photo-1612457814068-d0144f77c3a4?q=80&w=2940&auto=format&fit:crop',
+    imageUrl: 'https://images.unsplash.com/photo-1612457814068-d0144f77c3a4?q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800',
     year: 2024,
     price: 105600.00,
     description: 'Stunning design and a powerful V8 engine.',
   ),
 ];
 
-// 💡 FEATURED: Extend featuredCars to 18 items by duplicating the base list
+// FEATURED: Extend featuredCars to 18 items by duplicating the base list
 final List<CarModel> featuredCars = List.generate(18, (index) {
   final baseCar = baseFeaturedCars[index % baseFeaturedCars.length];
   final iteration = (index ~/ baseFeaturedCars.length); // 0, 0, ... 1, 1, ...
@@ -113,7 +114,7 @@ class HomePage extends StatelessWidget {
           SliverList(
             delegate: SliverChildListDelegate( 
               <Widget>[
-                // 💡 Hero Section
+                // Hero Section
                 const _BuildHeroSection(),
                 
                 const _BuildSearchFilterBar(),
@@ -122,7 +123,7 @@ class HomePage extends StatelessWidget {
 
                 const _BuildSectionHeader(title: 'Featured Inventory', subtitle: 'Explore our top selections.'),
                 const SizedBox(height: 20),
-                // 💡 FEATURED: Controlled Carousel (18 items, scrolls one-by-one)
+                // FEATURED: Controlled Carousel (18 items, scrolls one-by-one)
                 const _BuildFeaturedCarousel(), 
 
                 const SizedBox(height: 80),
@@ -134,6 +135,7 @@ class HomePage extends StatelessWidget {
                 const SizedBox(height: 80),
 
                 const _BuildSectionHeader(title: 'What Our Drivers Say', subtitle: 'Trusted by car enthusiasts worldwide.'),
+                // UPDATED: Testimonials Carousel is now Stateful and Auto-Swiping
                 const _BuildTestimonialsCarousel(), 
 
                 const SizedBox(height: 80),
@@ -175,26 +177,21 @@ class _BuildSliverAppBar extends StatelessWidget implements PreferredSizeWidget 
 
   @override
   Widget build(BuildContext context) {
-    final logoWidget = Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Row(
-        mainAxisSize: MainAxisSize.min, 
-        children: <Widget>[
-          SizedBox(
-            width: 150,
-            height: 50,
-            child: Center(
-              child: Text(
-                'DENOVO MOTORS',
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  color: denovoWhite,
-                  fontSize: 20,
-                  letterSpacing: 1.5,
-                ),
-              ),
-            ),
-          ),
-        ],
+    // Logo is wrapped in InkWell to link to home
+    final logoWidget = InkWell(
+      onTap: () {
+        // Simulates navigating back to the home route in a multi-page app.
+        // Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 5.0),
+        child: Image.asset(
+          'images/logo.png',
+          height: 40, // Appropriate height for a navbar logo
+          width: 150, // Constrain the logo width
+          fit: BoxFit.contain,
+          // The image is expected to be white/light to fit the denovoBlack background
+        ),
       ),
     );
 
@@ -346,7 +343,7 @@ class _BuildHeroSection extends StatelessWidget {
       height: 700,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          // 💡 Local Asset Image
+          // Local Asset Image
           image: AssetImage('images/hero_image.webp'), 
           fit: BoxFit.cover,
           // Background image is only slightly visible
@@ -373,8 +370,19 @@ class _BuildHeroSection extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                // UPDATED: New Subtitle Text
                 Text(
-                  'YOUR DREAM DRIVE, DELIVERED.',
+                  'Explore the finest selection of luxury and performance vehicles.',
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    fontSize: 22,
+                    // White text is highly visible on the dark background
+                    color: denovoWhite.withOpacity(0.95), 
+                  ),
+                ),
+                const SizedBox(height: 20),
+                // UPDATED: New Main Title Text
+                Text(
+                  'WE DELIVER, YOU DRIVE!',
                   style: GoogleFonts.montserrat(
                     fontSize: 72,
                     fontWeight: FontWeight.w900,
@@ -385,15 +393,6 @@ class _BuildHeroSection extends StatelessWidget {
                     shadows: [
                       Shadow(offset: const Offset(3, 3), blurRadius: 6.0, color: denovoRed.withOpacity(0.5))
                     ],
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Text(
-                  'Explore the finest selection of luxury and performance vehicles with Denovo Motors. We Deliver, You Drive!',
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    fontSize: 22,
-                    // White text is highly visible on the dark background
-                    color: denovoWhite.withOpacity(0.95), 
                   ),
                 ),
                 const SizedBox(height: 40),
@@ -559,7 +558,7 @@ class _BuildSectionHeader extends StatelessWidget {
   }
 }
 
-// --- 💡 WIDGET 5: FEATURED CAROUSEL (LEFT ALIGNMENT & FULL SCROLL FIX) ---
+// --- WIDGET 5: FEATURED CAROUSEL (LEFT ALIGNMENT & FULL SCROLL FIX) ---
 class _BuildFeaturedCarousel extends StatefulWidget {
   const _BuildFeaturedCarousel();
 
@@ -577,7 +576,7 @@ class _BuildFeaturedCarouselState extends State<_BuildFeaturedCarousel> {
   // Initialize PageController with the desired viewport fraction
   final PageController _pageController = PageController(viewportFraction: 1 / 4.0);
   int _currentCarIndex = 0; 
-  // 💡 NEW: Track if the page controller has been initialized and offset applied
+  // Track if the page controller has been initialized and offset applied
   bool _isInitialized = false; 
 
   // The fixed left and right padding for the entire content area
@@ -656,11 +655,27 @@ class _BuildFeaturedCarouselState extends State<_BuildFeaturedCarousel> {
             child: ClipRRect(
               borderRadius: const BorderRadius.vertical(top: Radius.circular(15.0)),
               child: Image.network(
-                car.imageUrl,
+                car.imageUrl, // Now using specific car images
                 fit: BoxFit.cover,
                 width: double.infinity,
                 height: 200,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return Container(
+                    height: 200,
+                    color: Colors.grey[900],
+                    child: Center(
+                      child: CircularProgressIndicator(
+                        value: loadingProgress.expectedTotalBytes != null
+                            ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
+                            : null,
+                        color: denovoRed,
+                      ),
+                    ),
+                  );
+                },
                 errorBuilder: (context, error, stackTrace) => Container(
+                  height: 200,
                   color: Colors.grey[800],
                   child: const Center(
                     child: Icon(Icons.directions_car, size: 80, color: denovoWhite),
@@ -819,7 +834,7 @@ class _BuildFeaturedCarouselState extends State<_BuildFeaturedCarousel> {
 
   @override
   Widget build(BuildContext context) {
-    // 💡 Must call initialization function here if we didn't do it in initState, 
+    // Must call initialization function here if we didn't do it in initState, 
     // or if the screen size changes. Using a simple flag to prevent repeating 
     // the jumpTo on every build if not needed.
     if (!_isInitialized) {
@@ -844,7 +859,7 @@ class _BuildFeaturedCarouselState extends State<_BuildFeaturedCarousel> {
                 child: _buildCarCard(context, car),
               );
 
-              // 💡 FIX 3: Apply the necessary extra padding to the very last card
+              // FIX 3: Apply the necessary extra padding to the very last card
               // This pushes the last card further left so it aligns with the right margin
               // when the PageView reaches the end of its scroll.
               if (index == _totalCars - 1) {
@@ -954,62 +969,156 @@ class _BuildWhyChooseUs extends StatelessWidget {
   }
 }
 
-// --- WIDGET 7: TESTIMONIALS CAROUSEL ---
-class _BuildTestimonialsCarousel extends StatelessWidget {
+// --- WIDGET 7: TESTIMONIALS CAROUSEL (STATEFUL, AUTO-SWIPE) ---
+class _BuildTestimonialsCarousel extends StatefulWidget {
   const _BuildTestimonialsCarousel();
 
-  final List<Map<String, String>> testimonials = const [
+  @override
+  State<_BuildTestimonialsCarousel> createState() => _BuildTestimonialsCarouselState();
+}
+
+class _BuildTestimonialsCarouselState extends State<_BuildTestimonialsCarousel> {
+  // UPDATED: Increased to 9 distinct testimonials
+  final List<Map<String, String>> _testimonials = const [
     {'quote': 'The process was seamless and the delivery was on time. Denovo Motors found my exact dream car!', 'name': 'Alex R.'},
     {'quote': 'Transparency in pricing is what sold me. Highly recommend for any luxury car purchase.', 'name': 'Sarah K.'},
     {'quote': 'Fantastic customer service and a genuinely certified vehicle. Will buy my next car here.', 'name': 'Michael D.'},
+    {'quote': 'I was hesitant about buying online, but Denovo made the experience safe, easy, and completely trustworthy.', 'name': 'Jessica L.'},
+    {'quote': 'The financing options were excellent and the 24/7 support answered all my technical questions instantly.', 'name': 'David W.'},
+    {'quote': 'The quality control on their cars is unmatched. It felt brand new, not just used.', 'name': 'Chris P.'},
+    {'quote': 'Absolutely loved the door-to-door delivery service. It saved me so much time!', 'name': 'Emily H.'},
+    {'quote': 'Best inventory selection I have ever seen. Found a rare model immediately.', 'name': 'Robert B.'},
+    {'quote': 'Five stars for the smooth paperwork and quick turnaround. Driving my new car today!', 'name': 'Laura T.'},
   ];
+
+  final PageController _pageController = PageController();
+  late Timer _timer;
+  int _currentPage = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    // Start auto-swiping every 5 seconds
+    _timer = Timer.periodic(const Duration(seconds: 5), (Timer timer) {
+      if (_pageController.hasClients) {
+        // Get the current page and calculate the next one, wrapping around to the start
+        _currentPage = _pageController.page!.round();
+        int nextPage = (_currentPage + 1) % _testimonials.length;
+
+        _pageController.animateToPage(
+          nextPage,
+          duration: const Duration(milliseconds: 600),
+          curve: Curves.easeInOut,
+        );
+      }
+    });
+
+    // Listen to user swipes to update the dot indicators
+    _pageController.addListener(() {
+      if (_pageController.page != null && _pageController.page!.round() != _currentPage) {
+        setState(() {
+          _currentPage = _pageController.page!.round();
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel(); // Must cancel the timer to prevent memory leaks
+    _pageController.dispose();
+    super.dispose();
+  }
+  
+  // Helper to build the Dot Indicators
+  Widget _buildDotIndicators() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List.generate(_testimonials.length, (index) {
+        bool isActive = index == _currentPage;
+
+        return GestureDetector(
+          onTap: () {
+            // Allows user to tap a dot to jump to that testimonial
+            _pageController.animateToPage(
+              index,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+            );
+          },
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 150),
+            margin: const EdgeInsets.symmetric(horizontal: 5.0),
+            height: 10.0,
+            width: isActive ? 25.0 : 10.0,
+            decoration: BoxDecoration(
+              color: isActive ? denovoRed : denovoWhite.withOpacity(0.5),
+              borderRadius: BorderRadius.circular(5),
+            ),
+          ),
+        );
+      }),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300,
-      child: PageView.builder(
-        itemCount: testimonials.length,
-        itemBuilder: (context, index) {
-          final review = testimonials[index];
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 50.0),
-            child: Center(
-              child: Container(
-                padding: const EdgeInsets.all(40.0),
-                decoration: BoxDecoration(
-                  color: denovoBlack.withOpacity(0.9),
-                  borderRadius: BorderRadius.circular(15.0),
-                  border: Border.all(color: denovoYellow.withOpacity(0.3)),
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    const Icon(Icons.format_quote, color: denovoRed, size: 50),
-                    const SizedBox(height: 20),
-                    Text(
-                      review['quote']!,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        fontSize: 20,
-                        fontStyle: FontStyle.italic,
-                        color: denovoWhite,
-                      ),
+      height: 350, // Increased height to accommodate the dot indicators
+      child: Stack(
+        children: [
+          PageView.builder(
+            controller: _pageController,
+            itemCount: _testimonials.length,
+            itemBuilder: (context, index) {
+              final review = _testimonials[index];
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 50.0),
+                child: Center(
+                  child: Container(
+                    padding: const EdgeInsets.all(40.0),
+                    decoration: BoxDecoration(
+                      color: denovoBlack.withOpacity(0.9),
+                      borderRadius: BorderRadius.circular(15.0),
+                      border: Border.all(color: denovoYellow.withOpacity(0.3)),
                     ),
-                    const SizedBox(height: 15),
-                    Text(
-                      '- ${review['name']}',
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        color: denovoYellow,
-                        fontSize: 18,
-                      ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        const Icon(Icons.format_quote, color: denovoRed, size: 50),
+                        const SizedBox(height: 20),
+                        Text(
+                          review['quote']!,
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            fontSize: 20,
+                            fontStyle: FontStyle.italic,
+                            color: denovoWhite,
+                          ),
+                        ),
+                        const SizedBox(height: 15),
+                        Text(
+                          '- ${review['name']}',
+                          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                            color: denovoYellow,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            ),
-          );
-        },
+              );
+            },
+          ),
+          // Dot Indicators placed at the bottom
+          Positioned(
+            bottom: 20,
+            left: 0,
+            right: 0,
+            child: _buildDotIndicators(),
+          ),
+        ],
       ),
     );
   }
@@ -1141,11 +1250,18 @@ class _BuildFooter extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                    'DENOVO MOTORS',
-                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                      color: denovoRed,
-                      fontSize: 28,
+                  // Logo wrapped in InkWell to link to home
+                  InkWell(
+                    onTap: () {
+                      // Simulates navigating back to the home route in a multi-page app.
+                      // Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
+                    },
+                    child: Image.asset(
+                      'images/logo.png',
+                      height: 50, // Slightly larger for the footer
+                      width: 180,
+                      fit: BoxFit.contain,
+                      // The image is white, suitable for the denovoBlack background
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -1157,11 +1273,13 @@ class _BuildFooter extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20),
+                  // 💡 UPDATED: Added more social media icons
                   Row(
                     children: <Widget>[
-                      _buildSocialIcon(Icons.facebook),
-                      _buildSocialIcon(Icons.camera_alt),
-                      _buildSocialIcon(Icons.search),
+                      _buildSocialIcon(Icons.facebook),     // Facebook
+                      _buildSocialIcon(Icons.camera_alt),    // Instagram
+                      _buildSocialIcon(Icons.video_library), // YouTube/Video
+                      _buildSocialIcon(Icons.alternate_email), // X/Generic Link
                     ],
                   ),
                 ],
