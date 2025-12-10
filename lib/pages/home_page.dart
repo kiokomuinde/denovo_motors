@@ -202,7 +202,15 @@ class HomePage extends StatelessWidget {
 
                 const SizedBox(height: 60),
 
-                const _BuildSectionHeader(title: 'Featured Inventory', subtitle: 'Explore our top selections.'),
+                // 🌟 UPDATE: Title and Subtitle changed to 'Curated Vehicle Portfolio'
+                const _BuildSectionHeaderWithButton(
+                  title: 'Curated Vehicle Portfolio', 
+                  subtitle: 'A hand-selected collection of the world\'s finest vehicles.',
+                  buttonText: 'EXPLORE ALL VEHICLES',
+                  // action: () => Navigator.pushNamed(context, '/inventory'), // Example for a real app
+                ),
+                // END REPLACEMENT
+
                 const SizedBox(height: 20),
                 // FEATURED: Controlled Carousel (Now 18 unique items)
                 const _BuildFeaturedCarousel(), 
@@ -378,6 +386,7 @@ class _PulsingButtonState extends State<_PulsingButton> with SingleTickerProvide
             ElevatedButton.icon(
               onPressed: () {},
               icon: const Icon(Icons.arrow_forward),
+              // Use 'EXPLORE INVENTORY' here as a high-level action
               label: const Text('EXPLORE INVENTORY'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: denovoRed,
@@ -558,8 +567,9 @@ class _BuildSearchFilterBar extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            // ✅ Title is 'Find Your Perfect Vehicle'
             Text(
-              'Find Your Perfect Car',
+              'Find Your Perfect Vehicle',
               style: Theme.of(context).textTheme.displayMedium?.copyWith(
                 color: denovoBlack, 
                 fontSize: 24,
@@ -597,7 +607,7 @@ class _BuildSearchFilterBar extends StatelessWidget {
   }
 }
 
-// --- WIDGET 4: SECTION HEADER ---
+// --- WIDGET 4: SECTION HEADER (WITHOUT BUTTON) ---
 class _BuildSectionHeader extends StatelessWidget {
   final String title;
   final String subtitle;
@@ -631,6 +641,87 @@ class _BuildSectionHeader extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               fontSize: 18,
               color: denovoYellow,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// --- WIDGET: SECTION HEADER WITH BUTTON ---
+class _BuildSectionHeaderWithButton extends StatelessWidget {
+  final String title;
+  final String subtitle;
+  final String buttonText;
+  final VoidCallback? action; // Optional callback for the button
+
+  const _BuildSectionHeaderWithButton({
+    required this.title, 
+    required this.subtitle, 
+    required this.buttonText, 
+    this.action,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 50.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: <Widget>[
+          // Left Side: Title and Subtitle
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              // 🌟 TITLE: 'Curated Vehicle Portfolio'
+              Text(
+                title,
+                style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                  fontSize: 48,
+                  fontWeight: FontWeight.w900,
+                  color: denovoBlack, // Use Black/White for contrast
+                ),
+              ),
+              const SizedBox(height: 8),
+              Container(
+                width: 80,
+                height: 4,
+                color: denovoRed,
+              ),
+              const SizedBox(height: 10),
+              // 🌟 SUBTITLE: 'A hand-selected collection of the world\'s finest vehicles.'
+              Text(
+                subtitle,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  fontSize: 18,
+                  color: denovoBlack.withOpacity(0.7), // Use Black/White for contrast
+                ),
+              ),
+            ],
+          ),
+
+          // Right Side: View More Button (Styled for action)
+          SizedBox(
+            height: 50,
+            child: TextButton.icon(
+              onPressed: action ?? () {
+                // Default action for a web project is often routing
+                debugPrint('Navigating to full inventory page...');
+              },
+              icon: const Icon(Icons.arrow_forward_ios, size: 18),
+              label: Text(buttonText),
+              style: TextButton.styleFrom(
+                foregroundColor: denovoRed, // Red text
+                backgroundColor: denovoRed.withOpacity(0.1), // Subtle background
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                textStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  side: BorderSide(color: denovoRed.withOpacity(0.5), width: 1),
+                ),
+              ),
             ),
           ),
         ],
@@ -1046,15 +1137,16 @@ class _BuildTestimonialsCarousel extends StatefulWidget {
 class _BuildTestimonialsCarouselState extends State<_BuildTestimonialsCarousel> {
   // UPDATED: Increased to 9 distinct testimonials
   final List<Map<String, String>> _testimonials = const [
-    {'quote': 'The process was seamless and the delivery was on time. Denovo Motors found my exact dream car!', 'name': 'Alex R.'},
-    {'quote': 'Transparency in pricing is what sold me. Highly recommend for any luxury car purchase.', 'name': 'Sarah K.'},
-    {'quote': 'Fantastic customer service and a genuinely certified vehicle. Will buy my next car here.', 'name': 'Michael D.'},
+    // The testimonial text already used the neutral term 'vehicle' after the previous update.
+    {'quote': 'The process was seamless and the delivery was on time. Denovo Motors found my exact dream vehicle!', 'name': 'Alex R.'},
+    {'quote': 'Transparency in pricing is what sold me. Highly recommend for any luxury vehicle purchase.', 'name': 'Sarah K.'},
+    {'quote': 'Fantastic customer service and a genuinely certified vehicle. Will buy my next vehicle here.', 'name': 'Michael D.'},
     {'quote': 'I was hesitant about buying online, but Denovo made the experience safe, easy, and completely trustworthy.', 'name': 'Jessica L.'},
     {'quote': 'The financing options were excellent and the 24/7 support answered all my technical questions instantly.', 'name': 'David W.'},
-    {'quote': 'The quality control on their cars is unmatched. It felt brand new, not just used.', 'name': 'Chris P.'},
+    {'quote': 'The quality control on their vehicles is unmatched. It felt brand new, not just used.', 'name': 'Chris P.'},
     {'quote': 'Absolutely loved the door-to-door delivery service. It saved me so much time!', 'name': 'Emily H.'},
     {'quote': 'Best inventory selection I have ever seen. Found a rare model immediately.', 'name': 'Robert B.'},
-    {'quote': 'Five stars for the smooth paperwork and quick turnaround. Driving my new car today!', 'name': 'Laura T.'},
+    {'quote': 'Five stars for the smooth paperwork and quick turnaround. Driving my new vehicle today!', 'name': 'Laura T.'},
   ];
 
   final PageController _pageController = PageController();
