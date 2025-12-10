@@ -22,80 +22,161 @@ class CarModel {
   });
 }
 
-// 💡 UPDATED: Base list of 8 cars with high-quality, specific image URLs
+// ✅ UPDATED: All imageUrls now use local asset paths: images/car1.webp to images/car18.webp
 final List<CarModel> baseFeaturedCars = [
+  // --- Requested Brands (Toyota, Range Rover, Mazda, Nissan, Porsche, Lexus, Subaru) ---
+
+  // 1. Toyota
   CarModel(
-    name: 'Porsche 911 GT3',
-    imageUrl: 'https://images.unsplash.com/photo-1552519503-f14d80a1aa74?q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800',
+    name: 'Toyota GR Supra',
+    imageUrl: 'images/car1.webp', // Local Asset: car1.webp
     year: 2023,
-    price: 180500.00,
-    description: 'A masterpiece of engineering and speed.',
+    price: 54900.00,
+    description: 'The return of the legendary Japanese sports coupe.',
   ),
+  // 2. Toyota
   CarModel(
-    name: 'BMW M8 Competition',
-    imageUrl: 'https://images.unsplash.com/photo-1555543163-955685a7e6e9?q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800',
+    name: 'Toyota Land Cruiser 300',
+    imageUrl: 'images/car2.webp', // Local Asset: car2.webp
     year: 2024,
-    price: 135900.00,
-    description: 'The pinnacle of luxury and performance.',
+    price: 88500.00,
+    description: 'Unmatched off-road capability and luxury.',
   ),
+  // 3. Range Rover
   CarModel(
-    name: 'Mercedes-AMG G 63',
-    imageUrl: 'https://images.unsplash.com/photo-1627993070494-068b5563969a?q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800',
+    name: 'Range Rover Sport SVR',
+    imageUrl: 'images/car3.webp', // Local Asset: car3.webp
+    year: 2023,
+    price: 130000.00,
+    description: 'High-performance luxury SUV with a supercharged engine.',
+  ),
+  // 4. Mazda
+  CarModel(
+    name: 'Mazda MX-5 Miata RF',
+    imageUrl: 'images/car4.webp', // Local Asset: car4.webp
+    year: 2024,
+    price: 36000.00,
+    description: 'The definitive lightweight roadster experience.',
+  ),
+  // 5. Nissan
+  CarModel(
+    name: 'Nissan GT-R Nismo',
+    imageUrl: 'images/car5.webp', // Local Asset: car5.webp
     year: 2022,
-    price: 179000.00,
-    description: 'Iconic design meets off-road capability.',
+    price: 210000.00,
+    description: 'Godzilla: track-focused supercar performance.',
   ),
+  // 6. Porsche
   CarModel(
-    name: 'Audi R8 Coupe V10',
-    imageUrl: 'https://images.unsplash.com/photo-1549463942-e2540d995328?q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800',
+    name: 'Porsche 911 Carrera S',
+    imageUrl: 'images/car6.webp', // Local Asset: car6.webp
     year: 2023,
-    price: 158400.00,
-    description: 'Naturally aspirated V10 power and sharp looks.',
+    price: 125000.00,
+    description: 'The timeless German sports car icon.',
   ),
+  // 7. Porsche
   CarModel(
-    name: 'Range Rover Sport',
-    imageUrl: 'https://images.unsplash.com/photo-1616781297594-54c30c82f9d7?q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800',
+    name: 'Porsche Taycan Turbo S',
+    imageUrl: 'images/car7.webp', // Local Asset: car7.webp
     year: 2024,
-    price: 95000.00,
-    description: 'Luxury SUV redefined.',
+    price: 195000.00,
+    description: 'Electric power meets Porsche precision.',
   ),
+  // 8. Lexus
   CarModel(
-    name: 'Tesla Model S Plaid',
-    imageUrl: 'https://images.unsplash.com/photo-1606775586675-b6957a4e8d35?q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800',
-    year: 2023,
-    price: 108990.00,
-    description: 'Electric performance and futuristic technology.',
+    name: 'Lexus LC 500 Convertible',
+    imageUrl: 'images/car8.webp', // Local Asset: car8.webp
+    year: 2024,
+    price: 115000.00,
+    description: 'Open-air luxury with a powerful naturally aspirated V8.',
   ),
+  // 9. Lexus
   CarModel(
-    name: 'Ford Mustang Shelby GT500',
-    imageUrl: 'https://images.unsplash.com/photo-1617477545800-e2604ce22c60?q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800',
+    name: 'Lexus RC F Track Edition',
+    imageUrl: 'images/car9.webp', // Local Asset: car9.webp
     year: 2022,
-    price: 80500.00,
-    description: 'American muscle at its finest.',
+    price: 98000.00,
+    description: 'Track-ready performance in a stylish coupe.',
   ),
+  // 10. Subaru
   CarModel(
-    name: 'Lexus LC 500',
-    imageUrl: 'https://images.unsplash.com/photo-1612457814068-d0144f77c3a4?q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800',
+    name: 'Subaru WRX STI S209',
+    imageUrl: 'images/car10.webp', // Local Asset: car10.webp
+    year: 2021,
+    price: 65000.00,
+    description: 'Limited edition rally heritage with aggressive styling.',
+  ),
+  // 11. Subaru
+  CarModel(
+    name: 'Subaru BRZ Premium',
+    imageUrl: 'images/car11.webp', // Local Asset: car11.webp
     year: 2024,
-    price: 105600.00,
-    description: 'Stunning design and a powerful V8 engine.',
+    price: 32000.00,
+    description: 'Pure, balanced, and fun-to-drive coupe.',
+  ),
+
+  // --- Other High-Demand Brands ---
+
+  // 12. Mercedes-Benz
+  CarModel(
+    name: 'Mercedes-AMG GT Black Series',
+    imageUrl: 'images/car12.webp', // Local Asset: car12.webp
+    year: 2021,
+    price: 325000.00,
+    description: 'A true race car for the road.',
+  ),
+  // 13. BMW
+  CarModel(
+    name: 'BMW M3 Competition',
+    imageUrl: 'images/car13.webp', // Local Asset: car13.webp
+    year: 2024,
+    price: 85000.00,
+    description: 'Iconic sedan blending track performance and daily driveability.',
+  ),
+  // 14. Audi
+  CarModel(
+    name: 'Audi RS 7 Sportback',
+    imageUrl: 'images/car14.webp', // Local Asset: car14.webp
+    year: 2023,
+    price: 128000.00,
+    description: 'Coupe styling with incredible power and utility.',
+  ),
+  // 15. Ford
+  CarModel(
+    name: 'Ford Bronco Raptor',
+    imageUrl: 'images/car15.webp', // Local Asset: car15.webp
+    year: 2024,
+    price: 75000.00,
+    description: 'Extreme off-road performance and rugged design.',
+  ),
+  // 16. Chevrolet
+  CarModel(
+    name: 'Chevrolet Corvette Stingray',
+    imageUrl: 'images/car16.webp', // Local Asset: car16.webp
+    year: 2023,
+    price: 70000.00,
+    description: 'Mid-engine revolutionizing American performance.',
+  ),
+  // 17. Volvo
+  CarModel(
+    name: 'Volvo Polestar 1',
+    imageUrl: 'images/car17.webp', // Local Asset: car17.webp
+    year: 2021,
+    price: 155000.00,
+    description: 'A luxurious and powerful electric hybrid coupe.',
+  ),
+  // 18. Alfa Romeo
+  CarModel(
+    name: 'Alfa Romeo Giulia Quadrifoglio',
+    imageUrl: 'images/car18.webp', // Local Asset: car18.webp
+    year: 2024,
+    price: 82000.00,
+    description: 'Italian flair with a Ferrari-derived twin-turbo V6.',
   ),
 ];
 
-// FEATURED: Extend featuredCars to 18 items by duplicating the base list
-final List<CarModel> featuredCars = List.generate(18, (index) {
-  final baseCar = baseFeaturedCars[index % baseFeaturedCars.length];
-  final iteration = (index ~/ baseFeaturedCars.length); // 0, 0, ... 1, 1, ...
-
-  return CarModel(
-    // Add an iteration number to the name to differentiate duplicates
-    name: baseCar.name + (index >= 8 ? ' (${index + 1})' : ''), 
-    imageUrl: baseCar.imageUrl,
-    year: baseCar.year + iteration, // Vary the year slightly
-    price: baseCar.price + (index * 1000.0), // Vary the price slightly
-    description: baseCar.description,
-  );
-});
+// The featuredCars list now only contains the 18 unique cars.
+final List<CarModel> featuredCars = baseFeaturedCars;
 
 // --- HOMEPAGE START ---
 
@@ -123,7 +204,7 @@ class HomePage extends StatelessWidget {
 
                 const _BuildSectionHeader(title: 'Featured Inventory', subtitle: 'Explore our top selections.'),
                 const SizedBox(height: 20),
-                // FEATURED: Controlled Carousel (18 items, scrolls one-by-one)
+                // FEATURED: Controlled Carousel (Now 18 unique items)
                 const _BuildFeaturedCarousel(), 
 
                 const SizedBox(height: 80),
@@ -135,7 +216,7 @@ class HomePage extends StatelessWidget {
                 const SizedBox(height: 80),
 
                 const _BuildSectionHeader(title: 'What Our Drivers Say', subtitle: 'Trusted by car enthusiasts worldwide.'),
-                // UPDATED: Testimonials Carousel is now Stateful and Auto-Swiping
+                // Testimonials Carousel is now Stateful and Auto-Swiping
                 const _BuildTestimonialsCarousel(), 
 
                 const SizedBox(height: 80),
@@ -370,7 +451,7 @@ class _BuildHeroSection extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                // 1. UPDATED: Main Title Text (Now at the top)
+                // 1. UPDATED ORDER: Main Title Text (Now at the top)
                 Text(
                   'WE DELIVER, YOU DRIVE!',
                   style: GoogleFonts.montserrat(
@@ -386,7 +467,7 @@ class _BuildHeroSection extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
-                // 2. UPDATED: New Subtitle Text (Now below the title)
+                // 2. UPDATED ORDER: New Subtitle Text (Now below the title)
                 Text(
                   'Explore the finest selection of luxury and performance vehicles.',
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
@@ -488,11 +569,11 @@ class _BuildSearchFilterBar extends StatelessWidget {
             const SizedBox(height: 20),
             Row(
               children: <Widget>[
-                Expanded(child: _buildFilterDropdown(context, 'Select Make', ['BMW', 'Porsche', 'Audi', 'Mercedes'])),
+                Expanded(child: _buildFilterDropdown(context, 'Select Make', ['Toyota', 'Porsche', 'Range Rover', 'Nissan'])),
                 const SizedBox(width: 20),
-                Expanded(child: _buildFilterDropdown(context, 'Select Model', ['911', 'M8', 'R8', 'G 63'])),
+                Expanded(child: _buildFilterDropdown(context, 'Select Model', ['Supra', '911', 'SVR', 'GT-R'])),
                 const SizedBox(width: 20),
-                Expanded(child: _buildFilterDropdown(context, 'Price Range', ['\$50k - \$100k', '\$100k - \$200k', 'Over \$200k'])),
+                Expanded(child: _buildFilterDropdown(context, 'Price Range', ['\$30k - \$80k', '\$80k - \$150k', 'Over \$150k'])),
                 const SizedBox(width: 20),
                 SizedBox(
                   height: 60,
@@ -568,10 +649,11 @@ class _BuildFeaturedCarousel extends StatefulWidget {
 
 class _BuildFeaturedCarouselState extends State<_BuildFeaturedCarousel> {
   // Constants for the carousel
-  final int _totalCars = featuredCars.length; // 18 items
+  final int _totalCars = featuredCars.length; 
   final int _cardsPerPage = 4;
   final double _viewportFraction = 1 / 4.0; // Show 4 cards at once
-  late final int _totalPages = (_totalCars / _cardsPerPage).ceil();
+  // 18 cars / 4 cards per page = 4.5, ceiling is 5 total pages
+  late final int _totalPages = (_totalCars / _cardsPerPage).ceil(); 
 
   // Initialize PageController with the desired viewport fraction
   final PageController _pageController = PageController(viewportFraction: 1 / 4.0);
@@ -613,11 +695,9 @@ class _BuildFeaturedCarouselState extends State<_BuildFeaturedCarousel> {
       final double viewportWidth = _pageController.position.viewportDimension;
       
       // Calculate the centering offset in pixels: 
-      // PageView centers the item. Offset is the space on the left and right of the first item.
       final double centeringOffset = (viewportWidth * (1 - _viewportFraction)) / 2;
       
       // We want the left edge of the first card to be at `_horizontalPadding`.
-      // The required initial scroll offset is: -(Centering Offset) + Desired Margin
       final double initialScrollOffset = -centeringOffset + _horizontalPadding;
 
       // Jump to the calculated pixel offset.
@@ -654,26 +734,13 @@ class _BuildFeaturedCarouselState extends State<_BuildFeaturedCarousel> {
             flex: 2,
             child: ClipRRect(
               borderRadius: const BorderRadius.vertical(top: Radius.circular(15.0)),
-              child: Image.network(
-                car.imageUrl, // Now using specific car images
+              // ✅ UPDATED: Switched from Image.network to Image.asset
+              child: Image.asset(
+                car.imageUrl, // Now using local asset path
                 fit: BoxFit.cover,
                 width: double.infinity,
                 height: 200,
-                loadingBuilder: (context, child, loadingProgress) {
-                  if (loadingProgress == null) return child;
-                  return Container(
-                    height: 200,
-                    color: Colors.grey[900],
-                    child: Center(
-                      child: CircularProgressIndicator(
-                        value: loadingProgress.expectedTotalBytes != null
-                            ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
-                            : null,
-                        color: denovoRed,
-                      ),
-                    ),
-                  );
-                },
+                // Removed loadingBuilder and errorBuilder for network image
                 errorBuilder: (context, error, stackTrace) => Container(
                   height: 200,
                   color: Colors.grey[800],
@@ -742,7 +809,6 @@ class _BuildFeaturedCarouselState extends State<_BuildFeaturedCarousel> {
 
   // --- Helper to build the Arrow Controls ---
   Widget _buildArrowButton(bool isNext) {
-    // FIX 2: Correct max scrollable index calculation.
     // The maximum index we can scroll to and see all 4 cards is 18 - 4 = 14.
     final int maxScrollableIndex = _totalCars - _cardsPerPage;
 
@@ -803,6 +869,7 @@ class _BuildFeaturedCarouselState extends State<_BuildFeaturedCarousel> {
       right: 0,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
+        // The number of dots is 5 for 18 items (4 per page)
         children: List.generate(_totalPages, (index) {
           // Determine if this dot represents the currently visible group
           bool isActive = index == activeGroupIndex;
@@ -811,7 +878,8 @@ class _BuildFeaturedCarouselState extends State<_BuildFeaturedCarousel> {
             onTap: () {
               // Clicking a dot jumps to the start of that group
               _pageController.animateToPage(
-                index * _cardsPerPage,
+                // Ensure we don't jump past the max scrollable index (14)
+                (index * _cardsPerPage).clamp(0, _totalCars - _cardsPerPage),
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeInOut,
               );
@@ -849,7 +917,7 @@ class _BuildFeaturedCarouselState extends State<_BuildFeaturedCarousel> {
           // 1. The main content (Page View)
           PageView.builder(
             controller: _pageController,
-            itemCount: _totalCars, // Total number of cars (18)
+            itemCount: _totalCars, 
             itemBuilder: (context, index) {
               final CarModel car = featuredCars[index];
               
@@ -859,9 +927,7 @@ class _BuildFeaturedCarouselState extends State<_BuildFeaturedCarousel> {
                 child: _buildCarCard(context, car),
               );
 
-              // FIX 3: Apply the necessary extra padding to the very last card
-              // This pushes the last card further left so it aligns with the right margin
-              // when the PageView reaches the end of its scroll.
+              // Apply the necessary extra padding to the very last card
               if (index == _totalCars - 1) {
                 // Calculate the amount of space that needs to be added to the right of the last card:
                 // This space should be equal to the left padding (50px) minus the gap (5px)
