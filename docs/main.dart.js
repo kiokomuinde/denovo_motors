@@ -36360,14 +36360,13 @@ $S:0}
 A.J8.prototype={
 rv(a,b,c){var s=null,r=A.dG(8)
 return new A.bK(B.l4,A.fo(A.c([A.ds(s,A.uE(a,B.E,s,s,30),B.t,s,s,new A.bT(c,s,s,r,s,s,B.T),s,s,s,B.Bw,s,s,s),B.jf,A.cb(b,s,s,s,A.eP(s,s,B.h,s,s,s,s,s,s,s,s,16,s,s,s,s,s,!0,s,s,s,s,s,s,s,s),s,s)],t.D),B.aa,B.a2,B.Z),s)},
-J(a){var s,r,q,p,o,n=this,m=null,l=A.c([B.E,A.a5(242,B.E.n()>>>16&255,B.E.n()>>>8&255,B.E.n()&255),A.a5(51,B.y.n()>>>16&255,B.y.n()>>>8&255,B.y.n()&255)],t.t_),k=A.V(a).ok.y
-k=A.cb("Explore the finest selection of luxury and performance vehicles.",m,m,m,k==null?m:k.iW(A.a5(242,B.h.n()>>>16&255,B.h.n()>>>8&255,B.h.n()&255),22),m,m)
-s=A.cb("WE DELIVER, YOU DRIVE!",m,m,m,A.aB9().$6$color$fontSize$fontWeight$height$letterSpacing$shadows(B.a9,72,B.bp,1.1,2,A.c([new A.fG(A.a5(B.c.a9(127.5),B.y.n()>>>16&255,B.y.n()>>>8&255,B.y.n()&255),B.HU,6)],t.kO)),m,m)
-r=A.a5(B.c.a9(178.5),B.E.n()>>>16&255,B.E.n()>>>8&255,B.E.n()&255)
-q=A.dG(10)
-p=A.Rb(B.y,2)
-o=t.D
-return A.ds(m,A.ds(m,A.lP(new A.bK(B.Bv,A.fo(A.c([k,B.cQ,s,B.Lb,B.Rd,B.we,A.ds(m,A.hk(A.c([n.rv(B.lh,"Sports",B.y),n.rv(B.CD,"Luxury",B.a9),n.rv(B.Cw,"Electric",B.y),n.rv(B.CG,"SUV",B.a9)],o),B.aa,B.dH,B.Z,0),B.t,m,m,new A.bT(r,m,p,q,m,m,B.T),m,m,m,B.BF,m,m,m)],o),B.ao,B.dG,B.Z),m),m,m),B.t,m,m,new A.bT(m,m,m,m,m,new A.p2(B.jK,B.jL,B.e2,l,m,m),B.T),m,m,m,m,m,m,m),B.t,m,m,B.xD,m,700,m,m,m,m,m)}}
+J(a){var s,r,q,p,o=this,n=null,m=A.c([B.E,A.a5(242,B.E.n()>>>16&255,B.E.n()>>>8&255,B.E.n()&255),A.a5(51,B.y.n()>>>16&255,B.y.n()>>>8&255,B.y.n()&255)],t.t_),l=A.cb("WE DELIVER, YOU DRIVE!",n,n,n,A.aB9().$6$color$fontSize$fontWeight$height$letterSpacing$shadows(B.a9,72,B.bp,1.1,2,A.c([new A.fG(A.a5(B.c.a9(127.5),B.y.n()>>>16&255,B.y.n()>>>8&255,B.y.n()&255),B.HU,6)],t.kO)),n,n),k=A.V(a).ok.y
+k=A.cb("Explore the finest selection of luxury and performance vehicles.",n,n,n,k==null?n:k.iW(A.a5(242,B.h.n()>>>16&255,B.h.n()>>>8&255,B.h.n()&255),22),n,n)
+s=A.a5(B.c.a9(178.5),B.E.n()>>>16&255,B.E.n()>>>8&255,B.E.n()&255)
+r=A.dG(10)
+q=A.Rb(B.y,2)
+p=t.D
+return A.ds(n,A.ds(n,A.lP(new A.bK(B.Bv,A.fo(A.c([l,B.cQ,k,B.Lb,B.Rd,B.we,A.ds(n,A.hk(A.c([o.rv(B.lh,"Sports",B.y),o.rv(B.CD,"Luxury",B.a9),o.rv(B.Cw,"Electric",B.y),o.rv(B.CG,"SUV",B.a9)],p),B.aa,B.dH,B.Z,0),B.t,n,n,new A.bT(s,n,q,r,n,n,B.T),n,n,n,B.BF,n,n,n)],p),B.ao,B.dG,B.Z),n),n,n),B.t,n,n,new A.bT(n,n,n,n,n,new A.p2(B.jK,B.jL,B.e2,m,n,n),B.T),n,n,n,n,n,n,n),B.t,n,n,B.xD,n,700,n,n,n,n,n)}}
 A.J9.prototype={
 wY(a,b,c){var s=null,r=A.ajQ(s,new A.fB(4,A.dG(8),B.o),s,B.By,s,s,s,s,!0,s,s,s,s,s,s,B.h,!0,s,s,s,s,s,s,s,s,s,s,s,s,s,s,b,s,s,s,s,s,s,s,s,s,!0,!0,s,s,s,s,s,s,s,s,s,s,s,s,s,s),q=A.Y(c).h("ai<1,hT<x>>")
 q=A.X(new A.ai(c,new A.a6Y(),q),q.h("at.E"))
