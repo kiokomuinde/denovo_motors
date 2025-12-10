@@ -370,17 +370,7 @@ class _BuildHeroSection extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                // UPDATED: New Subtitle Text
-                Text(
-                  'Explore the finest selection of luxury and performance vehicles.',
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    fontSize: 22,
-                    // White text is highly visible on the dark background
-                    color: denovoWhite.withOpacity(0.95), 
-                  ),
-                ),
-                const SizedBox(height: 20),
-                // UPDATED: New Main Title Text
+                // 1. UPDATED: Main Title Text (Now at the top)
                 Text(
                   'WE DELIVER, YOU DRIVE!',
                   style: GoogleFonts.montserrat(
@@ -393,6 +383,16 @@ class _BuildHeroSection extends StatelessWidget {
                     shadows: [
                       Shadow(offset: const Offset(3, 3), blurRadius: 6.0, color: denovoRed.withOpacity(0.5))
                     ],
+                  ),
+                ),
+                const SizedBox(height: 20),
+                // 2. UPDATED: New Subtitle Text (Now below the title)
+                Text(
+                  'Explore the finest selection of luxury and performance vehicles.',
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    fontSize: 22,
+                    // White text is highly visible on the dark background
+                    color: denovoWhite.withOpacity(0.95), 
                   ),
                 ),
                 const SizedBox(height: 40),
